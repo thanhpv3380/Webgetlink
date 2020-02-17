@@ -1,0 +1,17 @@
+extends ./layout.pug  
+block content    
+    h1 List Link
+    .d-flex.align-items-center.mb-3
+        a.btn.btn-primary(href="/create") Thêm sản phẩm
+    table.table.text-center
+        tr
+            th STT
+            th Name
+            th URL
+        - var i = 0;
+        each link in links 
+            tr 
+                th #{++i}
+                th #{link.name}
+                th 
+                    a(class="btn btn-primary text-light", href=link.url) #{link.url} 

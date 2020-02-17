@@ -9,7 +9,7 @@ const app = express();
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-
+const PORT = process.env.PORT || 3000;
 // update body when get data from form
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -30,4 +30,4 @@ app.post('/create', async (req, res) => {
 });
 app.use(express.static('public'));
 
-app.listen(3000, () => console.log('listen 3000'));
+app.listen(PORT, () => console.log(`listen ${PORT}`));

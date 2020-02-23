@@ -28,6 +28,10 @@ app.post('/create', async (req, res) => {
     const link = await Link.create(req.body);
     res.redirect('/');
 });
+app.get('/delete/:id', async (req, res) => {
+    const link = await Link.deleteOne({ _id: req.params.id});
+    res.redirect('/');
+});
 app.use(express.static('public'));
 
 app.listen(PORT, () => console.log(`listen ${PORT}`));

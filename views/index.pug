@@ -1,17 +1,22 @@
 extends ./layout.pug  
 block content    
     h1 List Link
-    .d-flex.align-items-center.mb-3
-        a.btn.btn-primary(href="/create") Add Link
-    table.table.text-center
-        tr
-            th STT
-            th Name
-            th URL
-        - var i = 0;
-        each link in links 
-            tr 
-                th #{++i}
-                th #{link.name}
-                th 
-                    a(class="btn btn-primary text-light", href=link.url) #{link.url} 
+    .d-flex.align-items-center.mb-5
+        a.btn.btn-success(href="/create") Add Link
+    table.table.table-bordered
+      thead.thead-dark
+        tr.text-center
+          th(scope='col') #
+          th(scope='col') Name
+          th(scope='col') Link
+          th(scope='col') Handle
+      tbody
+        -var i = 0
+        each link in links
+          tr
+            th(scope='row') #{++i}
+            td.text-center #{link.name}
+            td 
+              a(class="btn btn-primary text-light", href=link.url) #{link.url} 
+            td 
+              a(class="btn btn-danger text-light", href="/delete/" + link._id) Delete
